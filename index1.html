@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Érdi Repülőtér Emlékmű</title>
+    <meta name="description" content="Az Érdi Repülőtér Emlékműért Egyesület hivatalos oldala. Támogassa az 1928-1944 között működő legendás repülőtér emlékének megőrzését.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Videóháttér stílusok */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 4.8rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Sötétítő overlay a videón */
+            z-index: 1;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2; /* A szöveg a videó és az overlay felett legyen */
+        }
+        
+        /* Videó helyettesítő kép mobilon */
+        @media (max-width: 768px) {
+            .hero-video {
+                display: none;
+            }
+            
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/header-bg.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/legcsavar_logo.png" alt="Érdi Repülőtér Emlékmű Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Menü megnyitása">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Főoldal</a></li>
+                    <li><a href="tortenet.html">Történet</a></li>
+                    <li><a href="szervezetek.html">Szervezetek</a></li>
+                    <li><a href="szemelyek.html">Személyek</a></li>
+                    <li><a href="projekt.html">A Projekt</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="galeria.html">Galéria</a></li>
+                    <li><a href="hirlevel.html">Hírlevél</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Videóháttér -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="videos/20250508_1027_TZ_Airport Memorial Inauguration_simple_compose.mp4" type="video/mp4">
+                <!-- Fallback ha a videó nem támogatott -->
+                Az Ön böngészője nem támogatja a videó lejátszását.
+            </video>
+            
+            <div class="container">
+                <h1>Érdi Repülőtér Emlékmű</h1>
+                <p class="subtitle">Őrizzük meg együtt a magyar repüléstörténet fontos helyszínének emlékét!</p>
+                <a href="tamogatas.html" class="btn btn-primary">Támogassa a projektet</a>
+            </div>
+        </section>
+
+        <section class="intro">
+            <div class="container">
+                <!-- A többi tartalom marad változatlan... -->

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Érdi Repülőtér Emlékmű</title>
+    <meta name="description" content="Az Érdi Repülőtér Emlékműért Egyesület hivatalos oldala. Támogassa az 1928-1944 között működő legendás repülőtér emlékének megőrzését.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Főoldal specifikus videóháttér stílusok dupla magassággal */
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 14rem 0;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    width: 80%; /* Itt állítod be a doboz szélességét, pl. 80% */
+    max-width: 1600px; /* Maximum szélesség korlátozása */
+    margin: 0 auto; /* Középre igazítás */
+    border-radius: 12px; /* Opcionális: lekerekített sarkok */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Opcionális: árnyék a kiemeléshez */
+}
+        
+/* Az overlay is a teljes konténert fedi továbbra is */
+.home-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+        
+/* A videó továbbra is kitölti a teljes konténert */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Kitölti a konténer teljes szélességét */
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+        
+        .home-hero .container {
+            position: relative;
+            z-index: 2; /* A szöveg a videó és az overlay felett legyen */
+            width: 100%;
+        }
+        
+        /* Nagyobb címek a főoldalon */
+        .home-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .home-hero .subtitle {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .home-hero .btn-primary {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Videó helyettesítő kép mobilon */
+@media (max-width: 768px) {
+    .home-hero {
+        padding: 12rem 0; /* 9rem helyett 12rem */
+    }
+            
+            .home-hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/header-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                padding: 9rem 0; /* Kisebb, de még mindig nagyobb, mint az eredeti */
+            }
+            
+            .home-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .home-hero .subtitle {
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .home-hero {
+                padding: 7rem 0;
+            }
+            
+            .home-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .home-hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .home-hero .btn-primary {
+                font-size: 1rem;
+                padding: 0.8rem 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/legcsavar_logo.png" alt="Érdi Repülőtér Emlékmű Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Menü megnyitása">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Főoldal</a></li>
+                    <li><a href="tortenet.html">Történet</a></li>
+                    <li><a href="szervezetek.html">Szervezetek</a></li>
+                    <li><a href="szemelyek.html">Személyek</a></li>
+                    <li><a href="projekt.html">A Projekt</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="galeria.html">Galéria</a></li>
+                    <li><a href="hirlevel.html">Hírlevél</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Főoldal specifikus hero osztálynevet használunk a dupla magassághoz -->
+        <section class="home-hero">
+            <!-- Videóháttér -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="videos/20250508_1027_TZ_Airport Memorial Inauguration_simple_compose.mp4" type="video/mp4">
+                <!-- Fallback ha a videó nem támogatott -->
+                Az Ön böngészője nem támogatja a videó lejátszását.
+            </video>
+            
+            <div class="container">
+                <h1>Érdi Repülőtér Emlékmű</h1>
+                <p class="subtitle">Őrizzük meg együtt a magyar repüléstörténet fontos helyszínének emlékét!</p>
+                <a href="tamogatas.html" class="btn btn-primary">Támogassa a projektet</a>
+            </div>
+        </section>
+
+        <section class="intro">
+            <div class="container">
+                <!-- Itt lesz a tartalmi rész -->
+                <!-- Az index.html fájlban a .intro section tartalma -->
+                <section class="intro">
+                    <div class="container">
+                        <h2 class="section-title">Érdi Repülőtér - A magyar sportrepülés bölcsője</h2>
+                        
+                        <div class="intro-content">
+                            <div class="intro-text">
+                                <p>Érd egykori repülőterének emlékét máig őrzik a lokálpatrióták, és sohasem felejtik a hajdani repülők utódai sem. Az 1928 és 1944 között működő repülőtér a magyar repüléstörténet kiemelkedő helyszíne volt, ahol legendás pilóták és híres repülőgépek repültek.</p>
+                                
+                                <p>Itt volt a <strong>Műegyetemi Sportrepülő Egyesület (MSrE)</strong> és a <strong>Magyar Aero Szövetség (MAeSZ)</strong> kiképző tábora. Később a <strong>Horthy Miklós Nemzeti Repülő Alap (HMNRA)</strong> is folytatott itt képzést. Olyan kiemelkedő személyiségek fordultak meg vagy tevékenykedtek itt, mint az óceánrepülő <strong>Endresz György</strong>, az első világháborús hadirepülő és berepülő <strong>Dobos István</strong>, a szintén első világháborús vadászpilóta <strong>Kaszala Károly</strong>, a Széchenyi-díjas repülőgéptervező-mérnök, sportrepülő <strong>Bánhidi Antal</strong>, valamint a magyar sportrepülés kimagasló egyénisége, az első magyar aranykoszorús vitorlázórepülő, <strong>Tasnádi László (Nádi)</strong>.</p>
+                                
+                                <p>Az érdi repülőtérhez köthető a magyar repülőgépépítés legendás típusa, a <strong>Gerle 13</strong> berepülése is, amely a tervezőpilóta Bánhidi Antal műrepülésével együtt rendben zajlott. A Gerle Érd állandó vendége volt. Az olyan ikonikus gépek, mint a BL-5 és BL-6 iskolagépek is használták a repülőteret.</p>
+                            </div>
+                            
+                            <div class="intro-cta">
+                                <div class="cta-box">
+                                    <h3>Az emlékmű projekt</h3>
+                                    <p>Az Érdi Repülőtér Emlékműért Egyesület (ÉRDREP) célja, hogy méltó emléket állítson az egykori repülőtérnek és az itt tevékenykedő pilótáknak, tervezőknek, oktatóknak.</p>
+                                    <a href="projekt.html" class="btn btn-primary">Tudjon meg többet</a>
+                                </div>
+                                
+                                <div class="cta-box">
+                                    <h3>Támogassa az emlékművet!</h3>
+                                    <p>Az emlékmű megvalósítása közadakozásból történik. Minden támogatást köszönettel fogadunk!</p>
+                                    <p class="bank-details">Pannónia' 76 Alapítvány<br>117746005-25743225</p>
+                                    <a href="tamogatas.html" class="btn btn-primary">Támogatási információk</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="highlights">
+                    <div class="container">
+                        <h2 class="section-title">Fedezze fel a történetet</h2>
+                        
+                        <div class="highlights-grid">
+                            <div class="card">
+                                <img src="img/torteneti/repuloter-madartavlat.jpg" alt="Érdi repülőtér madártávlatból" class="card-img">
+                                <div class="card-content">
+                                    <h3 class="card-title">Az érdi repülőtér története</h3>
+                                    <p>Ismerje meg az 1928 és 1944 között működő érdi repülőtér történetét, jelentőségét a magyar sportrepülésben.</p>
+                                    <a href="tortenet.html" class="btn">Részletek</a>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="img/torteneti/msre-logo.jpg" alt="MSrE logo" class="card-img">
+                                <div class="card-content">
+                                    <h3 class="card-title">A repülő szervezetek</h3>
+                                    <p>Tudjon meg többet a Műegyetemi Sportrepülő Egyesületről és más szervezetekről, amelyek az érdi repülőtéren tevékenykedtek.</p>
+                                    <a href="szervezetek.html" class="btn">Részletek</a>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <img src="img/szemelyek/banhidi-antal.jpg" alt="Bánhidi Antal" class="card-img">
+                                <div class="card-content">
+                                    <h3 class="card-title">Legendás pilóták</h3>
+                                    <p>Ismerje meg azokat a pilótákat, tervezőket és oktatókat, akik az érdi repülőtéren tevékenykedtek és hozzájárultak a magyar repülés fejlődéséhez.</p>
+                                    <a href="szemelyek.html" class="btn">Részletek</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="quote-section">
+                    <div class="container">
+                        <blockquote>
+                            <p>"Sportrepülésnek nevezik de több mint sport. Egy folyton megújuló győzelem, ami a röghözkötöttségéből szabadulni akaró ember évezredes küzdelmét koronázza, megnyitva előtte egy ország határait, melynek tengere az ég, bércei a felhőtornyok, lavinája a zivatar."</p>
+                            <cite>— Tardos Béla, repülőoktató - meteorológus</cite>
+                        </blockquote>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-info">
+                <p>Érdi Repülőtér Emlékműért Egyesület (ÉRDREP)</p>
+                <p>Székhely: 1155 Budapest, Perczel Mór utca 22.</p>
+                <p>Email: promse2021@gmail.com</p>
+                <p>Adószám: 19394073-1-42</p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Érdi Repülőtér Emlékműért Egyesület. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

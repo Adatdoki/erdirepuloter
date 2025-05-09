@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Galéria admin – működő bélyegképekkel</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+    .dropzone {
+      border: 2px dashed #888;
+      background: #fff;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+    .grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .card, .assigned {
+      width: 200px; min-height: 180px;
+      background: #fff; border: 1px solid #ccc; padding: 5px;
+      text-align: center;
+    }
+    .card img, .card video, .assigned img, .assigned video {
+      max-width: 100%;
+      max-height: 150px;
+    }
+    .assigned { border: 2px dashed #666; background: #fafafa; }
+    textarea { width: 100%; margin-top: 30px; height: 200px; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+<h1>Galéria admin – működő bélyegképekkel</h1>
+
+<div class="dropzone" id="dropzone">Dobd ide a <strong>img/feltoltott</strong> mappában lévő fájlokat</div>
+
+<h2>Feltöltött fájlok</h2>
+<div id="fileGrid" class="grid"></div>
+
+<h2>Galéria pozíciók</h2>
+<div id="galleryGrid" class="grid"></div>
+
+<h2>Összerendelések (csak fájlútvonalakat tartalmaz)</h2>
+<textarea id="jsonOutput" placeholder="JSON megjelenítéshez"></textarea>
+
+<script>
+const dropzone = document.getElementById('dropzone');
+const fileGrid = document.getElementById('fileGrid');
+const galleryGrid = document.getElementById('galleryGrid');
+const jsonOutput = document.getElementById('jsonOutput');
+
+let selectedPath = null;
+let assignmentMap = {}; // { pozíció: "img/feltoltott/fajlnev.jpg" }
+
+dropzone.addEventListener('dragover', e => {
+  e.preventDefault();
+  dropzone.style.background = '#e0e0e0';
+});
+dropzone.addEventListener('dragleave', () => {
+  dropzone.style.background = '#fff';
+});
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.style.background = '#fff';
+  handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(files) {
+  [...files].forEach(file => {
+    const relativePath = "img/feltoltott/" + file.name;
+    const reader = new FileReader();
+
+    reader.onload = e => {
+      const previewURL = e.target.result;
+      const div = document.createElement('div');
+      div.className = 'card';
+
+      if (file.type.startsWith('video')) {
+        div.innerHTML = `<video src="${previewURL}" controls></video><p>${file.name}</p>`;
+      } else {
+        div.innerHTML = `<img src="${previewURL}"><p>${file.name}</p>`;
+      }
+
+      div.onclick = () => {
+        selectedPath = relativePath;
+        alert(`Kiválasztva: ${file.name}`);
+      };
+
+      fileGrid.appendChild(div);
+    };
+
+    reader.readAsDataURL(file); // csak megjelenítésre
+  });
+}
+
+function updateJSON() {
+  const result = Object.entries(assignmentMap).map(([position, path]) => ({
+    position: parseInt(position),
+    path
+  }));
+  jsonOutput.value = JSON.stringify(result, null, 2);
+}
+
+// Galéria pozíciók
+for (let i = 1; i <= 6; i++) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'assigned';
+  wrapper.innerHTML = `<strong>Pozíció ${i}</strong><div class="content">—</div>`;
+  wrapper.onclick = () => {
+    if (!selectedPath) return alert('Előbb válassz ki egy fájlt!');
+    const content = wrapper.querySelector('.content');
+    if (selectedPath.endsWith('.mp4')) {
+      content.innerHTML = `<video src="${selectedPath}" controls></video>`;
+    } else {
+      content.innerHTML = `<img src="${selectedPath}">`;
+    }
+
+    assignmentMap[i] = selectedPath;
+    updateJSON();
+  };
+  galleryGrid.appendChild(wrapper);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hírlevél - Érdi Repülőtér Emlékmű</title>
+    <meta name="description" content="Iratkozzon fel hírlevelünkre és értesüljön az Érdi Repülőtér Emlékmű projektjének legfrissebb fejleményeiről, eseményeiről.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/legcsavar_logo.png" alt="Érdi Repülőtér Emlékmű Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Menü megnyitása">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="tortenet.html">Történet</a></li>
+                    <li><a href="szervezetek.html">Szervezetek</a></li>
+                    <li><a href="szemelyek.html">Személyek</a></li>
+                    <li><a href="projekt.html">A Projekt</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="galeria.html">Galéria</a></li>
+                    <li><a href="hirlevel.html" class="active">Hírlevél</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Hírlevél</h1>
+                <p class="subtitle">Kövesse nyomon az Érdi Repülőtér Emlékmű projektjének fejleményeit</p>
+            </div>
+        </section>
+
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="text-content">
+                        <h2>Hírlevél feliratkozás</h2>
+                        <p>Iratkozzon fel hírlevelünkre, hogy első kézből értesüljön:</p>
+                        <ul class="subscribe-benefits">
+                            <li>Az emlékmű projektjének legfrissebb fejleményeiről</li>
+                            <li>Közelgő rendezvényekről, megemlékezésekről</li>
+                            <li>Adománygyűjtési kampányokról</li>
+                            <li>Az érdi repülőtér történetével kapcsolatos kutatási eredményekről</li>
+                            <li>Exkluzív fotókról, dokumentumokról</li>
+                            <li>Önkéntességi lehetőségekről</li>
+                        </ul>
+                        <p>A hírlevelet havonta egyszer küldjük. Különleges események esetén rendkívüli hírleveleket is küldhetünk. Bármikor leiratkozhat a hírlevelünkről a benne található leiratkozási link segítségével.</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <h2>Feliratkozási űrlap</h2>
+                        <form id="subscribeForm" class="subscribe-form">
+                            <div class="form-group">
+                                <label for="name">Név *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email cím *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Érdeklődési területek (nem kötelező)</label>
+                                <div class="checkbox-group">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="interest-history" name="interests[]" value="history">
+                                        <label for="interest-history">Repüléstörténet</label>
+                                    </div>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="interest-events" name="interests[]" value="events">
+                                        <label for="interest-events">Események, rendezvények</label>
+                                    </div>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="interest-donations" name="interests[]" value="donations">
+                                        <label for="interest-donations">Adománygyűjtés</label>
+                                    </div>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="interest-volunteer" name="interests[]" value="volunteer">
+                                        <label for="interest-volunteer">Önkéntesség</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group form-checkbox">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <label for="privacy">Elfogadom az <a href="adatvedelem.html">adatvédelmi tájékoztatót</a>, és hozzájárulok adataim kezeléséhez. *</label>
+                            </div>
+                            
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary">Feliratkozás</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-benefits">
+            <div class="container">
+                <h2 class="section-title">Miért érdemes feliratkozni?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <img src="img/icons/news-icon.png" alt="Hírek ikon">
+                        </div>
+                        <h3>Naprakész információk</h3>
+                        <p>Értesüljön az emlékmű megvalósításának legfrissebb fejleményeiről, a gyűjtés állásáról.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <img src="img/icons/event-icon.png" alt="Esemény ikon">
+                        </div>
+                        <h3>Esemény meghívók</h3>
+                        <p>Kapjon meghívót a projekttel kapcsolatos eseményekre, találkozókra, ünnepségekre.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <img src="img/icons/photo-icon.png" alt="Fotó ikon">
+                        </div>
+                        <h3>Exkluzív tartalmak</h3>
+                        <p>Férjen hozzá olyan archív fotókhoz, dokumentumokhoz, történetekhez, amelyek máshol nem elérhetők.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <img src="img/icons/community-icon.png" alt="Közösség ikon">
+                        </div>
+                        <h3>Közösségi részvétel</h3>
+                        <p>Legyen részese egy lelkes közösségnek, amely elkötelezett a magyar repüléstörténeti örökség megőrzése mellett.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="container">
+                <blockquote>
+                    <p>"A múlt tisztelete nélkül nincs jövő. Az érdi repülőtér emlékének megőrzése nemcsak kötelességünk, hanem küldetésünk is."</p>
+                    <cite>— Meszes Mária, az Érdi Repülőtér Emlékműért Egyesület elnöke</cite>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-info">
+                <p>Érdi Repülőtér Emlékműért Egyesület (ÉRDREP)</p>
+                <p>Székhely: 1155 Budapest, Perczel Mór utca 22.</p>
+                <p>Email: promse2021@gmail.com</p>
+                <p>Adószám: 19394073-1-42</p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Érdi Repülőtér Emlékműért Egyesület. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subscribeForm = document.getElementById('subscribeForm');
+            
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Egyszerű validáció
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const privacy = document.getElementById('privacy').checked;
+                    
+                    if (!name || !email || !privacy) {
+                        alert('Kérjük, töltse ki az összes kötelező mezőt!');
+                        return;
+                    }
+                    
+                    // Itt lenne az adatok elküldése a szerver felé
+                    // Mivel ez csak egy statikus oldal, most csak egy üzenetet jelenítünk meg
+                    alert('Köszönjük a feliratkozást! Hamarosan küldünk egy megerősítő emailt a megadott címre.');
+                    subscribeForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

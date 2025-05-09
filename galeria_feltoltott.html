@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Galéria megjelenítés</title>
+  <style>
+    .grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .item { border: 1px solid #ccc; background: #fff; width: 200px; padding: 5px; }
+    .item img, .item video { max-width: 100%; max-height: 150px; }
+  </style>
+</head>
+<body>
+  <h1>Feltöltött galéria megjelenítés</h1>
+
+  <textarea id="inputJson" rows="10" cols="80" placeholder="Illeszd be ide az összerendelések JSON-jét..."></textarea><br>
+  <button onclick="renderGallery()">Megjelenítés</button>
+
+  <div id="galleryGrid" class="grid"></div>
+
+<script>
+function renderGallery() {
+  const galleryGrid = document.getElementById('galleryGrid');
+  galleryGrid.innerHTML = '';
+  const json = document.getElementById('inputJson').value;
+  let data;
+  try {
+    data = JSON.parse(json);
+  } catch (e) {
+    alert('Hibás JSON!');
+    return;
+  }
+
+  data.forEach(item => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'item';
+
+    if (item.dataUrl.startsWith('data:video')) {
+      wrapper.innerHTML = `<strong>Pozíció ${item.position}</strong><br><video src="${item.dataUrl}" controls></video>`;
+    } else {
+      wrapper.innerHTML = `<strong>Pozíció ${item.position}</strong><br><img src="${item.dataUrl}">`;
+    }
+
+    galleryGrid.appendChild(wrapper);
+  });
+}
+</script>
+</body>
+</html>

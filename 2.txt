@@ -1,0 +1,28 @@
+erdi-repuloter/
+│
+├── index.html             # Főoldal
+├── tortenet.html          # Az érdi repülőtér története
+├── szervezetek.html       # Szervezetek bemutatása
+├── szemelyek.html         # Jelentős személyek
+├── projekt.html           # A projekt bemutatása
+├── tamogatas.html         # Támogatási információk
+├── galeria.html           # Képgaléria
+├── kapcsolat.html         # Kapcsolatfelvétel
+│
+├── css/                   # CSS fájlok mappája
+│   ├── style.css          # Fő stíluslap
+│   └── normalize.css      # Böngésző-kompatibilitási CSS
+│
+├── js/                    # JavaScript fájlok mappája
+│   ├── main.js            # Fő javascript kód
+│   └── gallery.js         # Galéria specifikus script
+│
+└── img/                   # Képek mappája
+    ├── header-bg.jpg      # Fejléc háttér
+    ├── logo.png           # Logó
+    ├── emlekmuvek/        # Emlékmű tervek képei
+    ├── torteneti/         # Történelmi fotók
+    └── szemelyek/         # Személyek fotói
+
+
+https://claude.ai/chat/0642863b-1725-499b-8a4f-ca803ab90086

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Képgaléria - Érdi Repülőtér Emlékmű</title>
+    <meta name="description" content="Az érdi repülőtér történelmi fotói és az emlékmű tervei.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <!-- Fejléc tartalma ugyanaz, mint az index.html-ben -->
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Képgaléria</h1>
+                <p class="subtitle">Az érdi repülőtér történelmi fotói és az emlékmű tervei</p>
+            </div
+</div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-filter">
+                    <button class="active" data-category="all">Összes</button>
+                    <button data-category="torteneti">Történeti fotók</button>
+                    <button data-category="szemelyek">Személyek</button>
+                    <button data-category="emlekmuvek">Emlékmű tervek</button>
+                    <button data-category="projekt">Projekt</button>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Történeti képek -->
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/repuloter-madartavlat-thumb.jpg" data-full="img/torteneti/repuloter-madartavlat.jpg" alt="Az érdi repülőtér madártávlatból">
+                    </div>
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/dobozhangarok-thumb.jpg" data-full="img/torteneti/dobozhangarok.jpg" alt="Érdi repülőtér a dobozhangárokkal 1930-as évek">
+                    </div>
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/bl-gepek-thumb.jpg" data-full="img/torteneti/bl-gepek.jpg" alt="A Bánhidi-Lampich tervezte BL-6 és BL-4 motoros gépek Érden az 1930-as évek elején">
+                    </div>
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/vitorlazo-tabor-thumb.jpg" data-full="img/torteneti/vitorlazo-tabor.jpg" alt="Vitorlázó repülő tábor Érden, 1942-ben">
+                    </div>
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/vitorlazo-gepek-thumb.jpg" data-full="img/torteneti/vitorlazo-gepek.jpg" alt="Vitorlázó repülőgépek az érdi mezőn, 1941-ben">
+                    </div>
+                    <div class="gallery-item torteneti">
+                        <img src="img/torteneti/msre-oktatok-thumb.jpg" data-full="img/torteneti/msre-oktatok.jpg" alt="A MSrE oktatói és növendékei az érdi repülőtéren 1930-ban">
+                    </div>
+                    
+                    <!-- Személyek képei -->
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/banhidi-antal-thumb.jpg" data-full="img/szemelyek/banhidi-antal.jpg" alt="Bánhidi Antal az első Gerlével">
+                    </div>
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/tasnadi-laszlo-thumb.jpg" data-full="img/szemelyek/tasnadi-laszlo.jpg" alt="Tasnádi László (Nádi) pilóta">
+                    </div>
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/endresz-gyorgy-thumb.jpg" data-full="img/szemelyek/endresz-gyorgy.jpg" alt="Endresz György óceánrepülő pilóta">
+                    </div>
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/dobos-istvan-thumb.jpg" data-full="img/szemelyek/dobos-istvan.jpg" alt="Dobos István pilóta Svachulay Albatros gépével">
+                    </div>
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/kaszala-karoly-thumb.jpg" data-full="img/szemelyek/kaszala-karoly.jpg" alt="Kaszala Károly a 41 J századnál repülő Albatros D III gépével">
+                    </div>
+                    <div class="gallery-item szemelyek">
+                        <img src="img/szemelyek/nagyok-thumb.jpg" data-full="img/szemelyek/nagyok.jpg" alt="A 'nagyok' balról: Auguszt Lajos, Bollmann Béla, Tasnádi László, Stolte János, Szomolányi Károly - Érd 1941">
+                    </div>
+                    
+                    <!-- Emlékmű tervek -->
+                    <div class="gallery-item emlekmuvek">
+                        <img src="img/emlekmuvek/emlek-szemben-thumb.jpg" data-full="img/emlekmuvek/emlek-szemben.jpg" alt="A tervezett emlékmű szemközti nézete">
+                    </div>
+                    <div class="gallery-item emlekmuvek">
+                        <img src="img/emlekmuvek/emlek-oldal-thumb.jpg" data-full="img/emlekmuvek/emlek-oldal.jpg" alt="A tervezett emlékmű oldalnézete">
+                    </div>
+                    
+                    <!-- Projekt képei -->
+                    <div class="gallery-item projekt">
+                        <img src="img/projekt/pro-mse-helyszini-thumb.jpg" data-full="img/projekt/pro-mse-helyszini.jpg" alt="A Pro-MSE csoport helyszíni szemlén 2019-ben">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Lightbox a nagyítható képekhez -->
+        <div class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-img" src="" alt="">
+            <div class="lightbox-caption"></div>
+            <span class="lightbox-prev">&#10094;</span>
+            <span class="lightbox-next">&#10095;</span>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <!-- Lábléc tartalma ugyanaz, mint az index.html-ben -->
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

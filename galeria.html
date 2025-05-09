@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Képgaléria - Érdi Repülőtér Emlékmű</title>
+    <meta name="description" content="Az érdi repülőtér történelmi fotói és az emlékmű tervei. Fedezze fel a magyar repüléstörténet kiemelkedő helyszínének képi örökségét.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="background-image"></div>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/legcsavar_logo.png" alt="Érdi Repülőtér Emlékmű Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Menü megnyitása">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+<ul class="nav-menu">
+    <li><a href="index.html">Főoldal</a></li>
+    <li><a href="tortenet.html">Történet</a></li>
+    <li><a href="szervezetek.html">Szervezetek</a></li>
+    <li><a href="szemelyek.html">Személyek</a></li>
+    <li><a href="projekt.html">A Projekt</a></li>
+    <li><a href="tamogatas.html">Támogatás</a></li>
+    <li><a href="galeria.html" class="active">Galéria</a></li>
+    <li><a href="hirlevel.html">Hírlevél</a></li>
+    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+</ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Képgaléria</h1>
+                <p class="subtitle">Az érdi repülőtér történelmi fotói és az emlékmű tervei</p>
+            </div>
+        </section>
+
+        <section class="gallery-intro">
+            <div class="container">
+                <p class="gallery-lead">Az alábbi gyűjtemény betekintést nyújt az érdi repülőtér történetébe, bemutatva a helyszínt, a repülőgépeket, a pilótákat, oktatókat és növendékeket. A galéria az 1928-1944 közötti időszak képi emlékeit, valamint a tervezett emlékmű látványterveit tartalmazza.</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-filter">
+                    <button class="active" data-filter="all">Összes</button>
+                    <button data-filter="repuloter">Repülőtér</button>
+                    <button data-filter="gepek">Repülőgépek</button>
+                    <button data-filter="szemelyek">Személyek</button>
+                    <button data-filter="emlekmu">Emlékmű tervek</button>
+                    <button data-filter="projekt">Projekt</button>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Repülőtér képei -->
+                    <div class="gallery-item repuloter" data-category="repuloter">
+                        <img src="img/galeria/repuloter-madartavlat-thumb.jpg" data-full="img/galeria/repuloter-madartavlat.jpg" alt="Az érdi repülőtér madártávlatból az 1930-as években">
+                        <div class="gallery-caption">
+                            <h3>Az érdi repülőtér madártávlatból</h3>
+                            <p>1930-as évek</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item repuloter" data-category="repuloter">
+                        <img src="img/galeria/dobozhangarok-thumb.jpg" data-full="img/galeria/dobozhangarok.jpg" alt="Érdi repülőtér a dobozhangárokkal 1930-as évek">
+                        <div class="gallery-caption">
+                            <h3>Dobozhangárok az érdi repülőtéren</h3>
+                            <p>1930-as évek</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item repuloter" data-category="repuloter">
+                        <img src="img/galeria/satorhangarok-thumb.jpg" data-full="img/galeria/satorhangarok.jpg" alt="Sátorhangárok az érdi legelő északi részén">
+                        <div class="gallery-caption">
+                            <h3>Sátorhangárok a repülőtéren</h3>
+                            <p>1929</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item repuloter" data-category="repuloter">
+                        <img src="img/galeria/tabor-1930-thumb.jpg" data-full="img/galeria/tabor-1930.jpg" alt="Motoros oktatói tábor Érden, 1930-ban">
+                        <div class="gallery-caption">
+                            <h3>Motoros oktatói tábor Érden</h3>
+                            <p>1930</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item repuloter" data-category="repuloter">
+                        <img src="img/galeria/tabor-1942-thumb.jpg" data-full="img/galeria/tabor-1942.jpg" alt="Vitorlázó repülő tábor Érden, 1942-ben">
+                        <div class="gallery-caption">
+                            <h3>Vitorlázó repülő tábor</h3>
+                            <p>1942</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Repülőgépek képei -->
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/bl-gepek-thumb.jpg" data-full="img/galeria/bl-gepek.jpg" alt="A Bánhidi-Lampich tervezte BL-6 és BL-4 motoros gépek Érden az 1930-as évek elején">
+                        <div class="gallery-caption">
+                            <h3>BL-6 és BL-4 motoros gépek</h3>
+                            <p>1930-as évek eleje</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/gerle-13-thumb.jpg" data-full="img/galeria/gerle-13.jpg" alt="A Gerle 13 repülőgép, a magyar repülőgépépítés legendás típusa">
+                        <div class="gallery-caption">
+                            <h3>Gerle 13 repülőgép</h3>
+                            <p>1930</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/lampich-l2-roma-thumb.jpg" data-full="img/galeria/lampich-l2-roma.jpg" alt="Lampich L2 Róma háromszoros világrekorder repülőgép">
+                        <div class="gallery-caption">
+                            <h3>Lampich L2 Róma</h3>
+                            <p>Háromszoros világrekorder repülőgép</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/lampich-l4-bohoc-thumb.jpg" data-full="img/galeria/lampich-l4-bohoc.jpg" alt="Lampich L4 'Bohóc' típusú gép">
+                        <div class="gallery-caption">
+                            <h3>Lampich L4 'Bohóc'</h3>
+                            <p>1930-as évek</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/vitorlazo-gepek-thumb.jpg" data-full="img/galeria/vitorlazo-gepek.jpg" alt="Vitorlázó repülőgépek az érdi mezőn, 1941-ben">
+                        <div class="gallery-caption">
+                            <h3>Vitorlázó repülőgépek Érden</h3>
+                            <p>1941</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gepek" data-category="gepek">
+                        <img src="img/galeria/bucker-thumb.jpg" data-full="img/galeria/bucker.jpg" alt="Bücker Bü 131 Jungmann kétüléses iskolagép">
+                        <div class="gallery-caption">
+                            <h3>Bücker Bü 131 Jungmann</h3>
+                            <p>Kétüléses iskolagép</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Személyek képei -->
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/msre-oktatok-thumb.jpg" data-full="img/galeria/msre-oktatok.jpg" alt="A MSrE oktatói és növendékei az érdi repülőtéren 1930-ban">
+                        <div class="gallery-caption">
+                            <h3>MSrE oktatók és növendékek</h3>
+                            <p>1930</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/banhidi-antal-thumb.jpg" data-full="img/galeria/banhidi-antal.jpg" alt="Bánhidi Antal az első Gerlével">
+                        <div class="gallery-caption">
+                            <h3>Bánhidi Antal</h3>
+                            <p>Az első Gerle tervezője</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/tasnadi-laszlo-thumb.jpg" data-full="img/galeria/tasnadi-laszlo.jpg" alt="Tasnádi László (Nádi)">
+                        <div class="gallery-caption">
+                            <h3>Tasnádi László (Nádi)</h3>
+                            <p>Az első magyar aranykoszorús vitorlázórepülő</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/endresz-gyorgy-thumb.jpg" data-full="img/galeria/endresz-gyorgy.jpg" alt="Endresz György óceánrepülő pilóta">
+                        <div class="gallery-caption">
+                            <h3>Endresz György</h3>
+                            <p>Óceánrepülő pilóta, oktató</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/dobos-istvan-thumb.jpg" data-full="img/galeria/dobos-istvan.jpg" alt="Dobos István pilóta Svachulay Albatros gépével">
+                        <div class="gallery-caption">
+                            <h3>Dobos István</h3>
+                            <p>Hadirepülő, berepülő, oktató</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/kaszala-karoly-thumb.jpg" data-full="img/galeria/kaszala-karoly.jpg" alt="Kaszala Károly a 41 J századnál repülő Albatros D III gépével">
+                        <div class="gallery-caption">
+                            <h3>Kaszala Károly</h3>
+                            <p>Vadászpilóta, világrekorder</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/nagyok-thumb.jpg" data-full="img/galeria/nagyok.jpg" alt="A 'nagyok' balról: Auguszt Lajos, Bollmann Béla, Tasnádi László, Stolte János, Szomolányi Károly - Érd 1941">
+                        <div class="gallery-caption">
+                            <h3>A 'nagyok' Érden</h3>
+                            <p>Auguszt Lajos, Bollmann Béla, Tasnádi László, Stolte János, Szomolányi Károly, 1941</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item szemelyek" data-category="szemelyek">
+                        <img src="img/galeria/szekely-vendegek-thumb.jpg" data-full="img/galeria/szekely-vendegek.jpg" alt="Székely vendégek az érdi reptéren">
+                        <div class="gallery-caption">
+                            <h3>Székely vendégek</h3>
+                            <p>Látogatóban az érdi repülőtéren</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Emlékmű tervek -->
+                    <div class="gallery-item emlekmu" data-category="emlekmu">
+                        <img src="img/galeria/emlek-szemben-thumb.jpg" data-full="img/galeria/emlek-szemben.jpg" alt="A tervezett emlékmű szemközti nézete">
+                        <div class="gallery-caption">
+                            <h3>Emlékmű terv</h3>
+                            <p>Szemközti nézet</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item emlekmu" data-category="emlekmu">
+                        <img src="img/galeria/emlek-oldal-thumb.jpg" data-full="img/galeria/emlek-oldal.jpg" alt="A tervezett emlékmű oldalnézete">
+                        <div class="gallery-caption">
+                            <h3>Emlékmű terv</h3>
+                            <p>Oldalnézet</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item emlekmu" data-category="emlekmu">
+                        <img src="img/galeria/emlek-helyszin-thumb.jpg" data-full="img/galeria/emlek-helyszin.jpg" alt="Az emlékmű tervezett helyszíne">
+                        <div class="gallery-caption">
+                            <h3>Az emlékmű helyszíne</h3>
+                            <p>A kijelölt terület Érden</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Projekt képei -->
+                    <div class="gallery-item projekt" data-category="projekt">
+                        <img src="img/galeria/pro-mse-helyszini-thumb.jpg" data-full="img/galeria/pro-mse-helyszini.jpg" alt="A Pro-MSE csoport helyszíni szemlén 2019-ben">
+                        <div class="gallery-caption">
+                            <h3>Pro-MSE helyszíni szemle</h3>
+                            <p>Balról: Punka György, Katona Sándor és Fekecs Gábor, 2019</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item projekt" data-category="projekt">
+                        <img src="img/galeria/nadi-pont-terkep-thumb.jpg" data-full="img/galeria/nadi-pont-terkep.jpg" alt="A Nádi-pont elhelyezkedése a Dunán">
+                        <div class="gallery-caption">
+                            <h3>A Nádi-pont</h3>
+                            <p>Tasnádi László emlékének megőrzése</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Lightbox a nagyítható képekhez -->
+        <div class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-img" src="" alt="">
+            <div class="lightbox-caption"></div>
+            <span class="lightbox-prev">&#10094;</span>
+            <span class="lightbox-next">&#10095;</span>
+        </div>
+        
+        <section class="submission-section">
+            <div class="container">
+                <div class="submission-box">
+                    <h2>Van Önnek régi fotója az érdi repülőtérről?</h2>
+                    <p>Amennyiben rendelkezik bármilyen fotóval, dokumentummal vagy emlékkel az egykori érdi repülőtérről, pilótáiról, repülőgépeiről, és szeretné megosztani az Érdi Repülőtér Emlékműért Egyesülettel, kérjük, vegye fel velünk a kapcsolatot az alábbi email címen:</p>
+                    <p class="contact-email">promse2021@gmail.com</p>
+                    <p>Köszönjük támogatását a repüléstörténeti emlékek megőrzésében!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-info">
+                <p>Érdi Repülőtér Emlékműért Egyesület (ÉRDREP)</p>
+                <p>Székhely: 1155 Budapest, Perczel Mór utca 22.</p>
+                <p>Email: promse2021@gmail.com</p>
+                <p>Adószám: 19394073-1-42</p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="tamogatas.html">Támogatás</a></li>
+                    <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                </ul>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Érdi Repülőtér Emlékműért Egyesület. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = document.querySelector('.lightbox-img');
+            const lightboxCaption = document.querySelector('.lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            
+            let currentIndex = 0;
+            let visibleItems = [...galleryItems];
+            
+            // Lightbox megnyitása a képre kattintva
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentIndex = visibleItems.indexOf(this);
+                    if (currentIndex !== -1) {
+                        openLightbox(currentIndex);
+                    }
+                });
+            });
+            
+            // Lightbox bezárása
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', closeLightbox);
+            }
+            
+            // Lightbox bezárása ESC gombbal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+                
+                // Léptetés nyilakkal
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'ArrowRight') {
+                        showNextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        showPrevImage();
+                    }
+                }
+            });
+            
+            // Kattintás a háttérre bezárja a lightboxot
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Következő kép
+            if (lightboxNext) {
+                lightboxNext.addEventListener('click', showNextImage);
+            }
+            
+            // Előző kép
+            if (lightboxPrev) {
+                lightboxPrev.addEventListener('click', showPrevImage);
+            }
+            
+            // Lightbox megnyitása
+            function openLightbox(index) {
+                const currentItem = visibleItems[index];
+                const imgSrc = currentItem.querySelector('img').getAttribute('data-full') || 
+                               currentItem.querySelector('img').src;
+                const caption = currentItem.querySelector('.gallery-caption').innerHTML;
+                
+                lightboxImg.src = imgSrc;
+                lightboxCaption.innerHTML = caption;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Lightbox bezárása
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Következő kép mutatása
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % visibleItems.length;
+                updateLightboxContent();
+            }
+            
+            // Előző kép mutatása
+            function showPrevImage() {
+                currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+                updateLightboxContent();
+            }
+            
+            // Lightbox tartalom frissítése
+            function updateLightboxContent() {
+                const currentItem = visibleItems[currentIndex];
+                const imgSrc = currentItem.querySelector('img').getAttribute('data-full') || 
+                               currentItem.querySelector('img').src;
+                const caption = currentItem.querySelector('.gallery-caption').innerHTML;
+                
+                // Átmeneti animáció
+                lightboxImg.style.opacity = 0;
+                
+                setTimeout(() => {
+                    lightboxImg.src = imgSrc;
+                    lightboxCaption.innerHTML = caption;
+                    lightboxImg.style.opacity = 1;
+                }, 300);
+            }
+            
+            // Galéria kategóriák
+            const filterButtons = document.querySelectorAll('.gallery-filter button');
+            
+            if (filterButtons.length) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Aktív gomb beállítása
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const category = this.getAttribute('data-filter');
+                        
+                        // Elemek szűrése
+                        visibleItems = [];
+                        galleryItems.forEach(item => {
+                            if (category === 'all' || item.getAttribute('data-category') === category) {
+                                item.style.display = 'block';
+                                visibleItems.push(item);
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

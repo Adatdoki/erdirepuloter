@@ -1,0 +1,1739 @@
+/* Alapstílusok */
+:root {
+    --primary-color: #3a7ebf;
+    --secondary-color: #e0eaf5;
+    --dark-color: #333;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --link-color: #2c64a6;
+    --link-hover-color: #1a4c8a;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Fejléc stílusok */
+.site-header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 1.5rem;
+}
+
+.main-nav a {
+    color: var(--dark-color);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.main-nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.main-nav a:hover:after,
+.main-nav a.active:after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--dark-color);
+    transition: var(--transition);
+}
+
+
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Gombok */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--link-hover-color);
+    color: white;
+}
+
+/* Szakaszok */
+section {
+    padding: 4rem 0;
+}
+
+section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.intro {
+    background-color: var(--light-color);
+}
+
+/* Kártyák */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Lábléc */
+.site-footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 3rem 0;
+}
+
+.site-footer a {
+    color: var(--secondary-color);
+}
+
+.site-footer a:hover {
+    color: white;
+}
+
+.footer-info,
+.footer-nav,
+.footer-copyright {
+    margin-bottom: 1.5rem;
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Responsive stílusok */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 5rem 2rem;
+        transition: var(--transition);
+    }
+
+    .nav-menu.show {
+        right: 0;
+    }
+
+    .main-nav li {
+        margin: 0 0 1.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Főoldal speciális stílusok */
+.intro-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.intro-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-cta {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cta-box {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.bank-details {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.quote-section {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+blockquote {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+}
+
+blockquote p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+blockquote cite {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        flex-direction: column;
+    }
+}
+
+/* Galéria stílusok */
+
+.gallery-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-filter button {
+    background-color: var(--light-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-filter button.active,
+.gallery-filter button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 200px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close,
+.lightbox-next,
+.lightbox-prev {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover,
+.lightbox-next:hover,
+.lightbox-prev:hover {
+    color: var(--primary-color);
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+}
+
+.lightbox-next {
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-prev {
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    .gallery-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .gallery-filter button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* Történeti oldal stílusok */
+.timeline-intro {
+    padding: 3rem 0;
+    background-color: var(--light-color);
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.text-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.image-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-content img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.timeline-section {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    padding: 1rem;
+    position: relative;
+    width: 50%;
+    margin-bottom: 3rem;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 3rem;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 3rem;
+}
+
+.timeline-date {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(58, 126, 191, 0.3);
+    z-index: 1;
+    text-align: center;
+}
+
+.timeline-date span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    right: -40px;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    left: -40px;
+}
+
+.timeline-content {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-img {
+    margin: 1.5rem 0;
+}
+
+.timeline-img img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.repulotes-section {
+    padding: 3rem 0;
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 992px) {
+    .timeline::before {
+        left: 40px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 8rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        left: 0;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-item {
+        padding-left: 6rem !important;
+    }
+    
+    .timeline-date {
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+}
+
+/* Szervezetek oldal stílusok */
+.intro-section {
+    background-color: var(--light-color);
+    padding: 2rem 0;
+}
+
+.lead-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.org-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.org-section:nth-child(odd) {
+    background-color: white;
+}
+
+.org-section:nth-child(even) {
+    background-color: var(--light-color);
+}
+
+.org-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.org-logo {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+    border: 3px solid var(--primary-color);
+}
+
+.org-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.org-title h2 {
+    margin-bottom: 0.5rem;
+}
+
+.org-dates {
+    color: #666;
+    font-style: italic;
+}
+
+.org-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.org-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.org-text h3 {
+    margin-top: 1.5rem;
+    color: var(--primary-color);
+}
+
+.org-photos {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.org-photo {
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.org-photo img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.org-quote {
+    margin: 3rem auto 0;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Időrendi diagram */
+.organizations-map {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.timeline-chart {
+    margin: 4rem 0;
+}
+
+.timeline-chart-bar {
+    position: relative;
+    height: 260px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 20px 0;
+}
+
+.timeline-years {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4%;
+    margin-bottom: 40px;
+}
+
+.timeline-years span {
+    position: relative;
+}
+
+.timeline-years span::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10px;
+    width: 1px;
+    background-color: #666;
+}
+
+.timeline-org, .timeline-marker {
+    position: absolute;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.timeline-org.msre {
+    background-color: var(--primary-color);
+    top: 80px;
+}
+
+.timeline-org.maesz {
+    background-color: #4caf50;
+    top: 120px;
+}
+
+.timeline-org.hmnra {
+    background-color: #ff9800;
+    top: 160px;
+}
+
+.timeline-marker.erd {
+    background-color: #f44336;
+    top: 200px;
+}
+
+.timeline-note {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .org-content {
+        flex-direction: column;
+    }
+    
+    .timeline-org span, .timeline-marker span {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-years span {
+        font-size: 0.8rem;
+    }
+    
+    .org-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .org-logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Személyek oldal stílusok */
+.lead-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.people-filter {
+    padding: 2rem 0;
+    background-color: var(--light-color);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-buttons button {
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.people-grid {
+    padding: 3rem 0;
+}
+
+.people-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.person-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.person-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--light-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.person-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1.5rem;
+    border: 3px solid var(--primary-color);
+    flex-shrink: 0;
+}
+
+.person-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.person-info h2 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.person-title {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.person-years {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.person-content {
+    padding: 1.5rem;
+}
+
+.person-quote {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.person-quote blockquote {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.supporters-list {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.supporters-list li {
+    margin-bottom: 0.5rem;
+}
+
+.nadi-point {
+    padding: 4rem 0;
+    background-color: var(--secondary-color);
+}
+
+.nadi-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.nadi-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.nadi-map {
+    flex: 1;
+    min-width: 300px;
+}
+
+.nadi-quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--primary-color);
+}
+
+.nadi-note {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .person-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .person-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-buttons button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Projekt oldal stílusok */
+.project-intro {
+    padding: 3rem 0;
+    background-color: var(--light-color);
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.text-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.text-content ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.text-content ol li {
+    margin-bottom: 0.5rem;
+}
+
+.image-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-content img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.project-history {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 100%;
+}
+
+.team-card-header {
+    padding: 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.team-card-header h3 {
+    margin: 0;
+    color: white;
+}
+
+.team-card-content {
+    padding: 1.5rem;
+}
+
+.team-card-content ul {
+    padding-left: 1.5rem;
+}
+
+.team-card-content li {
+    margin-bottom: 0.5rem;
+}
+
+.monument-design {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+.design-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.design-views {
+    flex: 1.5;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.design-view {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.design-view img {
+    width: 100%;
+    height: auto;
+}
+
+.design-view p {
+    padding: 1rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.design-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.inscription {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+}
+
+.inscription p {
+    margin: 0.5rem 0;
+}
+
+.inscription-highlight {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0 !important;
+}
+
+.project-support {
+    padding: 4rem 0;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.support-message h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.support-message p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.donation-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.donation-box h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.donation-account {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.donation-account-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .design-showcase {
+        flex-direction: column;
+    }
+}
+
+/* Támogatás oldal stílusok */
+.support-intro {
+    padding: 3rem 0;
+    background-color: var(--light-color);
+}
+
+.intro-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.intro-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.intro-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.donation-info {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.donation-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.donation-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+}
+
+.donation-header h3 {
+    margin: 0;
+    color: white;
+}
+
+.donation-content {
+    padding: 1.5rem;
+}
+
+.account-details {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.account-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.account-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.donation-note {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.supporter-list {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+.supporter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.supporter-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.supporter-logo {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #f8f8f8;
+}
+
+.supporter-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.supporter-details {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.supporter-details h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.individual-supporters {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.donation-cta {
+    padding: 4rem 0;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-content h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.copy-feedback {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #333;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.copy-feedback.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .intro-wrapper {
+        flex-direction: column;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* Galéria oldal stílusok */
+.gallery-intro {
+    padding: 2rem 0;
+    background-color: var(--light-color);
+}
+
+.gallery-lead {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.gallery-section {
+    padding: 3rem 0;
+}
+
+.gallery-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-filter button {
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.gallery-filter button.active,
+.gallery-filter button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 280px;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    padding: 0.8rem;
+    background-color: white;
+}
+
+.gallery-caption h3 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.gallery-caption p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Lightbox */
+.lightbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption h3 {
+    margin: 0 0 0.5rem 0;
+    color: white;
+}
+
+.lightbox-caption p {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.lightbox-close,
+.lightbox-next,
+.lightbox-prev {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover,
+.lightbox-next:hover,
+.lightbox-prev:hover {
+    color: var(--primary-color);
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    z-index: 1001;
+}
+
+.lightbox-next {
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-prev {
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.submission-section {
+    padding: 4rem 0;
+    background-color: var(--secondary-color);
+}
+
+.submission-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-email {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1.5rem 0;
+    padding: 0.8rem;
+    background-color: var(--light-color);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+
+/* Az alábbi CSS kódrészletet kell a style.css fájlba beilleszteni vagy módosítani */
+
+/* Eredeti page-header stílus frissítése 20%-kal kisebb padding értékekkel */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 3.2rem 0; /* Eredeti 4rem helyett 3.2rem (20%-kal csökkentve) */
+}
+
+/* Ha a hero szekció magasságát is csökkenteni szeretnéd a főoldalon */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 4.8rem 0; /* Eredeti 6rem helyett 4.8rem (20%-kal csökkentve) */
+}
+
+/* Responsive módosítások */
+@media (max-width: 576px) {
+    .page-header {
+        padding: 2.4rem 0; /* Kisebb képernyőkön még kisebb lehet */
+    }
+    
+    .hero {
+        padding: 3.6rem 0; /* Kisebb képernyőkön még kisebb lehet */
+    }
+}

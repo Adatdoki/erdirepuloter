@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kezelőfelület - Érdi Repülőtér Emlékmű</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-title h1 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .admin-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-user {
+            margin-right: 20px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #e9ecef;
+        }
+        
+        .admin-sidebar {
+            width: 250px;
+            float: left;
+            margin-right: 30px;
+        }
+        
+        .admin-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .admin-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .admin-menu a {
+            display: block;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .admin-menu a:hover, 
+        .admin-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .admin-content {
+            margin-left: 280px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            min-height: 500px;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        
+        .stat-title {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .recent-activity {
+            margin-top: 30px;
+        }
+        
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .activity-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+        
+        .activity-description {
+            margin: 5px 0;
+        }
+        
+        /* Űrlapok */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--link-hover-color);
+        }
+        
+        /* Táblázatok */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        /* Feliratkozók kezelése */
+        .subscription-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-select {
+            min-width: 200px;
+        }
+        
+        .search-box {
+            flex-grow: 1;
+        }
+        
+        /* Reszponzív beállítások */
+        @media (max-width: 992px) {
+            .admin-sidebar {
+                width: 100%;
+                float: none;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .admin-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .admin-menu li {
+                margin-bottom: 0;
+            }
+            
+            .admin-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Rejtett tartalmi panelek */
+        .content-panel {
+            display: none;
+        }
+        
+        .content-panel.active {
+            display: block;
+        }
+        
+        /* Értesítések */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <div class="admin-title">
+                <h1>Adminisztrátori Felület</h1>
+            </div>
+            <div class="admin-actions">
+                <span class="admin-user" id="adminUser">admin@erdirepter.hu</span>
+                <button class="logout-btn" id="logoutBtn">Kilépés</button>
+            </div>
+        </div>
+        
+        <div class="admin-sidebar">
+            <ul class="admin-menu">
+                <li><a href="#dashboard" class="nav-link active" data-panel="dashboard">Vezérlőpult</a></li>
+                <li><a href="#subscribers" class="nav-link" data-panel="subscribers">Feliratkozók</a></li>
+                <li><a href="#messages" class="nav-link" data-panel="messages">Beérkezett üzenetek</a></li>
+                <li><a href="#newsletter" class="nav-link" data-panel="newsletter">Hírlevél küldés</a></li>
+                <li><a href="#donations" class="nav-link" data-panel="donations">Adományok</a></li>
+                <li><a href="#settings" class="nav-link" data-panel="settings">Beállítások</a></li>
+            </ul>
+        </div>
+        
+        <div class="admin-content">
+            <!-- Vezérlőpult panel -->
+            <div class="content-panel active" id="dashboard">
+                <h2>Vezérlőpult</h2>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-title">Feliratkozók</div>
+                        <div class="stat-number">127</div>
+                        <div>az elmúlt hónapban +12</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Új üzenetek</div>
+                        <div class="stat-number">8</div>
+                        <div>olvasatlan: 3</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Adományok (Ft)</div>
+                        <div class="stat-number">985.000</div>
+                        <div>az elmúlt hónapban: 120.000 Ft</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Látogatók</div>
+                        <div class="stat-number">2458</div>
+                        <div>az elmúlt 30 napban</div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3>Legutóbbi aktivitás</h3>
+                    
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-time">Ma, 14:32</div>
+                            <div class="activity-description">Új üzenet érkezett: <strong>Kovács Péter</strong> - "Támogatási lehetőségek"</div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-time">Ma, 10:15</div>
+                            <div class="activity-description">Új feliratkozó: <strong>info@example.com</strong></div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-time">Tegnap, 16:42</div>
+                            <div class="activity-description">Új adomány regisztrálva: <strong>50.000 Ft</strong> - "Nagy József"</div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-time">2025.05.05. 09:30</div>
+                            <div class="activity-description">Hírlevél kiküldve: "Májusi hírek és fejlemények" - 125 címzett</div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-time">2025.05.04. 11:28</div>
+                            <div class="activity-description">Új üzenet érkezett: <strong>Szabó Andrea</strong> - "Repülőtér dokumentumok"</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Feliratkozók panel -->
+            <div class="content-panel" id="subscribers">
+                <h2>Hírlevél feliratkozók</h2>
+                
+                <div class="subscription-filters">
+                    <select class="form-control filter-select">
+                        <option value="all">Minden feliratkozó</option>
+                        <option value="active">Aktív</option>
+                        <option value="inactive">Inaktív</option>
+                    </select>
+                    
+                    <select class="form-control filter-select">
+                        <option value="all">Minden érdeklődési terület</option>
+                        <option value="history">Repüléstörténet</option>
+                        <option value="events">Események, rendezvények</option>
+                        <option value="donations">Adománygyűjtés</option>
+                        <option value="volunteer">Önkéntesség</option>
+                    </select>
+                    
+                    <input type="text" class="form-control search-box" placeholder="Keresés név vagy email alapján...">
+                    <button class="btn-primary btn-sm">Szűrés</button>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Email</th>
+                            <th width="20%">Név</th>
+                            <th width="20%">Feliratkozás ideje</th>
+                            <th width="20%">Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>kovacs.peter@example.com</td>
+                            <td>Kovács Péter</td>
+                            <td>2025.05.06.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Részletek</button>
+                                    <button class="btn-delete btn-sm">Törlés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>szabo.andrea@example.com</td>
+                            <td>Szabó Andrea</td>
+                            <td>2025.05.02.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Részletek</button>
+                                    <button class="btn-delete btn-sm">Törlés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>nagy.jozsef@example.com</td>
+                            <td>Nagy József</td>
+                            <td>2025.04.28.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Részletek</button>
+                                    <button class="btn-delete btn-sm">Törlés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>toth.katalin@example.com</td>
+                            <td>Tóth Katalin</td>
+                            <td>2025.04.25.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Részletek</button>
+                                    <button class="btn-delete btn-sm">Törlés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>kiss.laszlo@example.com</td>
+                            <td>Kiss László</td>
+                            <td>2025.04.20.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Részletek</button>
+                                    <button class="btn-delete btn-sm">Törlés</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn-primary">Exportálás CSV-be</button>
+                </div>
+            </div>
+            
+            <!-- Beérkezett üzenetek panel -->
+            <div class="content-panel" id="messages">
+                <h2>Beérkezett üzenetek</h2>
+                
+                <div class="subscription-filters">
+                    <select class="form-control filter-select">
+                        <option value="all">Minden üzenet</option>
+                        <option value="unread">Olvasatlan</option>
+                        <option value="read">Olvasott</option>
+                    </select>
+                    
+                    <input type="text" class="form-control search-box" placeholder="Keresés név vagy tárgy alapján...">
+                    <button class="btn-primary btn-sm">Szűrés</button>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th width="5%"></th>
+                            <th width="25%">Feladó</th>
+                            <th width="40%">Tárgy</th>
+                            <th width="15%">Dátum</th>
+                            <th width="15%">Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: var(--primary-color);"><strong>•</strong></td>
+                            <td>Kovács Péter</td>
+                            <td>Támogatási lehetőségek</td>
+                            <td>Ma, 14:32</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Olvasás</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--primary-color);"><strong>•</strong></td>
+                            <td>Horváth Anna</td>
+                            <td>Dokumentum felajánlás</td>
+                            <td>Ma, 09:15</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Olvasás</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--primary-color);"><strong>•</strong></td>
+                            <td>Szabó Andrea</td>
+                            <td>Repülőtér dokumentumok</td>
+                            <td>2025.05.04.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Olvasás</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Varga János</td>
+                            <td>Önkéntes jelentkezés</td>
+                            <td>2025.05.01.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Olvasás</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Takács Béla</td>
+                            <td>Érdeklődés az avatási ünnepségről</td>
+                            <td>2025.04.28.</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-primary btn-sm">Olvasás</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Hírlevél küldés panel -->
+            <div class="content-panel" id="newsletter">
+                <h2>Hírlevél küldés</h2>
+                
+                <div class="alert alert-info">
+                    Legutóbbi hírlevél kiküldve: 2025.05.05. - "Májusi hírek és fejlemények" (125 címzett)
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="newsletter-subject">Hírlevél tárgya</label>
+                        <input type="text" id="newsletter-subject" class="form-control" placeholder="Pl. Júniusi hírek és fejlemények">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newsletter-content">Hírlevél tartalma</label>
+                        <textarea id="newsletter-content" class="form-control" rows="15"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Címzettek</label>
+                        <div style="margin-bottom: 10px;">
+                            <input type="checkbox" id="all-subscribers" checked>
+                            <label for="all-subscribers" style="display: inline-block; margin-bottom: 0;">Minden feliratkozó (127)</label>
+                        </div>
+                        
+                        <div style="margin-left: 20px;">
+                            <div>
+                                <input type="checkbox" id="interest-history">
+                                <label for="interest-history" style="display: inline-block; margin-bottom: 0;">Repüléstörténet iránt érdeklődők (82)</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="interest-events">
+                                <label for="interest-events" style="display: inline-block; margin-bottom: 0;">Események, rendezvények iránt érdeklődők (95)</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="interest-donations">
+                                <label for="interest-donations" style="display: inline-block; margin-bottom: 0;">Adománygyűjtés iránt érdeklődők (64)</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="interest-volunteer">
+                                <label for="interest-volunteer" style="display: inline-block; margin-bottom: 0;">Önkéntesség iránt érdeklődők (42)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newsletter-test">Teszt email küldése</label>
+                        <input type="email" id="newsletter-test" class="form-control" placeholder="Email cím a teszt üzenethez">
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <button type="button" class="btn-primary">Teszt email küldése</button>
+                        <button type="button" class="btn-primary">Hírlevél kiküldése</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Adományok panel -->
+            <div class="content-panel" id="donations">
+                <h2>Adományok</h2>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-title">Összes adomány</div>
+                        <div class="stat-number">985.000 Ft</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Adományozók száma</div>
+                        <div class="stat-number">42</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Átlagos adomány</div>
+                        <div class="stat-number">23.452 Ft</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Legnagyobb adomány</div>
+                        <div class="stat-number">150.000 Ft</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 30px 0;">
+                    <h3>Új adomány rögzítése</h3>
+                    
+                    <form style="display: flex; gap: 15px; align-items: flex-end;">
+                        <div class="form-group" style="flex: 2;">
+                            <label for="donor-name">Adományozó neve</label>
+                            <input type="text" id="donor-name" class="form-control">
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="donation-amount">Összeg (Ft)</label>
+                            <input type="number" id="donation-amount" class="form-control">
+                        </div>
+                        
+                        <div class="form-group" style="flex: 2;">
+                            <label for="donation-date">Dátum</label>
+                            <input type="date" id="donation-date" class="form-control">
+                        </div>
+                        
+                        <button type="button" class="btn-primary">Rögzítés</button>
+                    </form>
+                </div>
+                
+                <h3>Adományok listája</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">Adományozó</th>
+                            <th width="20%">Összeg (Ft)</th>
+                            <th width="20%">Dátum</th>
+                            <th width="15%">Típus</th>
+                            <th width="15%">Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nagy József</td>
+                            <td>50.000</td>
+                            <td>2025.05.06.</td>
+                            <td>Banki átutalás</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-edit btn-sm">Szerkesztés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Molnár Gábor</td>
+                            <td>25.000</td>
+                            <td>2025.05.02.</td>
+                            <td>Banki átutalás</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-edit btn-sm">Szerkesztés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Kovács Nóra</td>
+                            <td>150.000</td>
+                            <td>2025.04.25.</td>
+                            <td>Banki átutalás</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-edit btn-sm">Szerkesztés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tóth Katalin</td>
+                            <td>10.000</td>
+                            <td>2025.04.20.</td>
+                            <td>Banki átutalás</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-edit btn-sm">Szerkesztés</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Kiss László</td>
+                            <td>30.000</td>
+                            <td>2025.04.15.</td>
+                            <td>Banki átutalás</td>
+<td>
+                                <div class="action-btns">
+                                    <button class="btn-edit btn-sm">Szerkesztés</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn-primary">Exportálás CSV-be</button>
+                </div>
+            </div>
+            
+            <!-- Beállítások panel -->
+            <div class="content-panel" id="settings">
+                <h2>Beállítások</h2>
+                
+                <div class="alert alert-warning">
+                    A beállítások módosítása azonnal érvénybe lép. Kérjük, körültekintően járjon el.
+                </div>
+                
+                <h3>Admin felhasználó</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="admin-email">Admin email</label>
+                        <input type="email" id="admin-email" class="form-control" value="admin@erdirepter.hu">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-password">Új jelszó</label>
+                        <input type="password" id="admin-password" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-password-confirm">Új jelszó megerősítése</label>
+                        <input type="password" id="admin-password-confirm" class="form-control">
+                    </div>
+                    
+                    <button type="button" class="btn-primary">Mentés</button>
+                </form>
+                
+                <h3 style="margin-top: 30px;">Email beállítások</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="reply-email">Válasz email cím</label>
+                        <input type="email" id="reply-email" class="form-control" value="promse2021@gmail.com">
+                        <small>Ez az email cím jelenik meg a hírlevelek és automatikus értesítések feladójaként.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notification-email">Értesítési email cím</label>
+                        <input type="email" id="notification-email" class="form-control" value="promse2021@gmail.com">
+                        <small>Erre az email címre érkeznek az értesítések az új feliratkozásokról és üzenetekről.</small>
+                    </div>
+                    
+                    <button type="button" class="btn-primary">Mentés</button>
+                </form>
+                
+                <h3 style="margin-top: 30px;">Weboldal adatok</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="site-title">Weboldal címe</label>
+                        <input type="text" id="site-title" class="form-control" value="Érdi Repülőtér Emlékmű">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="site-description">Weboldal leírása</label>
+                        <textarea id="site-description" class="form-control" rows="3">Az Érdi Repülőtér Emlékműért Egyesület hivatalos oldala. Támogassa az 1928-1944 között működő legendás repülőtér emlékének megőrzését.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bank-account">Bankszámlaszám</label>
+                        <input type="text" id="bank-account" class="form-control" value="117746005-25743225">
+                    </div>
+                    
+                    <button type="button" class="btn-primary">Mentés</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Az admin felhasználó megjelenítése a session storage alapján
+            const adminUser = document.getElementById('adminUser');
+            if (adminUser) {
+                // Az email címet a sessionStorage-ból vesszük, ahol a hub.html mentette
+                const loggedInEmail = sessionStorage.getItem('adminEmail');
+                if (loggedInEmail) {
+                    adminUser.textContent = loggedInEmail;
+                } else {
+                    // Ha nincs bejelentkezve, visszairányítás a hub.html oldalra
+                    window.location.href = 'hub.html';
+                }
+            }
+            
+            // Navigáció kezelése
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPanels = document.querySelectorAll('.content-panel');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPanel = this.getAttribute('data-panel');
+                    
+                    // Aktív osztály eltávolítása minden linkről és panelről
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    contentPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Aktív osztály hozzáadása a kiválasztott linkhez és panelhez
+                    this.classList.add('active');
+                    document.getElementById(targetPanel).classList.add('active');
+                    
+                    // URL frissítése a hash-sel
+                    window.location.hash = targetPanel;
+                });
+            });
+            
+            // Hash alapú navigáció kezelése betöltéskor
+            if (window.location.hash) {
+                const targetHash = window.location.hash.substring(1);
+                const targetLink = document.querySelector(`.nav-link[data-panel="${targetHash}"]`);
+                
+                if (targetLink) {
+                    targetLink.click();
+                }
+            }
+            
+            // Kijelentkezés gomb
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Biztosan ki szeretne jelentkezni?')) {
+                        // Töröljük a sessionStorage-t kijelentkezéskor
+                        sessionStorage.removeItem('adminEmail');
+                        window.location.href = 'hub.html';
+                    }
+                });
+            }
+            
+            // Itt további eseménykezelőket lehet hozzáadni a különböző űrlapokhoz és funkciókhoz
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Belépés</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-form {
+            margin-top: 2rem;
+        }
+        
+        .step {
+            display: none;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .code-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .code-input {
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0 0.25rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .btn-main {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-main:hover {
+            background-color: var(--link-hover-color);
+        }
+        
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Gomb letiltás stílus */
+        .btn-main:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .timer {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .resend {
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .resend-link {
+            color: var(--link-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="admin-container">
+            <h1>Belépés</h1>
+            
+            <div class="alert alert-success" id="successAlert"></div>
+            <div class="alert alert-danger" id="errorAlert"></div>
+            
+            <div class="login-form">
+                <!-- Első lépés: Email megadása -->
+                <div class="step active" id="step1">
+                    <p>Kérjük, adja meg az email címét a belépéshez szükséges kód elküldéséhez:</p>
+                    
+                    <div class="form-group">
+                        <label for="email">Email cím</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <button type="button" class="btn-main" id="sendCodeBtn">Kód küldése</button>
+                </div>
+                
+                <!-- Második lépés: Kód beírása -->
+                <div class="step" id="step2">
+                    <p>Az ellenőrző kódot elküldtük a megadott email címre.</p>
+                    <p>Kérjük, írja be a kapott 6 jegyű kódot:</p>
+                    
+                    <div class="code-inputs">
+                        <input type="text" class="code-input" maxlength="1" data-index="1">
+                        <input type="text" class="code-input" maxlength="1" data-index="2">
+                        <input type="text" class="code-input" maxlength="1" data-index="3">
+                        <input type="text" class="code-input" maxlength="1" data-index="4">
+                        <input type="text" class="code-input" maxlength="1" data-index="5">
+                        <input type="text" class="code-input" maxlength="1" data-index="6">
+                    </div>
+                    
+                    <div class="timer" id="codeTimer">A kód érvényessége: <span id="timerCount">5:00</span></div>
+                    
+                    <div class="form-group" style="margin-top: 2rem;">
+                        <button type="button" class="btn-main" id="verifyCodeBtn">Belépés</button>
+                    </div>
+                    
+                    <div class="resend" id="resendContainer">
+                        Nem kapta meg a kódot? <span class="resend-link" id="resendLink">Újraküldés</span>
+                    </div>
+                </div>
+                
+                <div class="loader" id="loader">
+                    <div class="loader-spinner"></div>
+                    <p>Kérjük, várjon...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elemek kiválasztása
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const sendCodeBtn = document.getElementById('sendCodeBtn');
+            const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+            const emailInput = document.getElementById('email');
+            const codeInputs = document.querySelectorAll('.code-input');
+            const loader = document.getElementById('loader');
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            const resendContainer = document.getElementById('resendContainer');
+            const resendLink = document.getElementById('resendLink');
+            const codeTimer = document.getElementById('codeTimer');
+            const timerCount = document.getElementById('timerCount');
+            
+            // Változók a kód érvényességéhez
+            let timer;
+            let timeLeft = 300; // 5 perc másodpercekben
+            let userEmail = ''; // Tároljuk a felhasználó által megadott emailt
+            
+            // Engedélyezett admin emailek tömbje
+            // Valós használatnál ezt szerveroldali konfigurációban kell tárolni!
+            const ADMIN_EMAILS = [
+                "admin@erdirepter.hu",
+                "elnok@erdirepter.hu",
+                "promse2021@gmail.com",
+                "meszesmaria@example.com",
+                "merk.peter@example.com"
+            ];
+            
+            // Kód küldés gomb eseménykezelő
+            sendCodeBtn.addEventListener('click', function() {
+                const email = emailInput.value.trim();
+                userEmail = email; // Tároljuk a beírt email címet
+                
+                if (!email) {
+                    showError("Kérjük, adja meg az email címét!");
+                    return;
+                }
+                
+                if (!isValidEmail(email)) {
+                    showError("Kérjük, adjon meg egy érvényes email címet!");
+                    return;
+                }
+                
+                // Adminisztrátor email ellenőrzése a tömbben
+                if (!ADMIN_EMAILS.includes(email)) {
+                    showError("Nincs jogosultsága a belépéshez!");
+                    return;
+                }
+                
+                // Kód generálása és email küldés szimulálása
+                showLoader();
+                
+                // 2 másodperc késleltetés a szimulált email küldéshez
+                setTimeout(function() {
+                    hideLoader();
+                    
+                    // Ha sikeres a kódküldés, lépjünk a következő lépésre
+                    step1.classList.remove('active');
+                    step2.classList.add('active');
+                    
+                    // Kód érvényességi idejét elindítjuk
+                    startTimer();
+                    
+                    // Újraküldés gomb és időzítő megjelenítése
+                    codeTimer.style.display = 'block';
+                    
+                    // 1 perc után jelenik meg az újraküldés gomb
+                    setTimeout(function() {
+                        resendContainer.style.display = 'block';
+                    }, 60000);
+                    
+                    // Első kód input mezőre fókuszálunk
+                    codeInputs[0].focus();
+                    
+                    // Siker üzenet
+                    showSuccess(`Ellenőrző kód elküldve a(z) ${email} címre!`);
+                }, 2000);
+            });
+            
+            // Kód beviteli mezők eseményei
+            codeInputs.forEach(input => {
+                // Csak számokat fogadunk el
+                input.addEventListener('input', function(e) {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                    
+                    if (this.value.length > 0) {
+                        const index = parseInt(this.dataset.index);
+                        if (index < 6) {
+                            codeInputs[index].focus();
+                        }
+                    }
+                    
+                    // Ellenőrizzük, hogy minden mező ki van-e töltve
+                    checkCodeCompletion();
+                });
+                
+                // Backspace kezelése
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && this.value === '') {
+                        const index = parseInt(this.dataset.index);
+                        if (index > 1) {
+                            codeInputs[index - 2].focus();
+                        }
+                    }
+                });
+            });
+            
+            // Ellenőrző kód beküldése
+            verifyCodeBtn.addEventListener('click', function() {
+                const code = Array.from(codeInputs).map(input => input.value).join('');
+                
+                if (code.length !== 6) {
+                    showError("Kérjük, adja meg a teljes 6 jegyű kódot!");
+                    return;
+                }
+                
+                // A kód ellenőrzése (ezt is szerveroldali kódban kellene)
+                // Demó célból elfogadunk bármilyen 6 számjegyű kódot
+                showLoader();
+                
+                // 2 másodperc késleltetés a szimulált kód ellenőrzéshez
+                setTimeout(function() {
+                    hideLoader();
+                    
+                    // A belépett email címet tároljuk a session storage-ban,
+                    // hogy az admin panel oldalon meg tudjuk jeleníteni
+                    sessionStorage.setItem('adminEmail', userEmail);
+                    
+                    // Sikeres belépés esetén átirányítás az admin felületre
+                    window.location.href = "mod.html";
+                }, 2000);
+            });
+            
+            // Újraküldés link eseménykezelő
+            resendLink.addEventListener('click', function() {
+                // Időzítő resetelése
+                clearInterval(timer);
+                timeLeft = 300;
+                updateTimerDisplay();
+                
+                // Szimuláljuk az újraküldést
+                showLoader();
+                resendContainer.style.display = 'none';
+                
+                setTimeout(function() {
+                    hideLoader();
+                    startTimer();
+                    showSuccess("Új kód elküldve a megadott email címre!");
+                    
+                    // 1 perc után jelenik meg az újraküldés gomb
+                    setTimeout(function() {
+                        resendContainer.style.display = 'block';
+                    }, 60000);
+                }, 2000);
+            });
+            
+            // Időzítő indítása
+            function startTimer() {
+                clearInterval(timer);
+                updateTimerDisplay();
+                
+                timer = setInterval(function() {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        showError("A kód érvényessége lejárt. Kérjük, kérjen újat!");
+                    }
+                }, 1000);
+            }
+            
+            // Időzítő megjelenítés frissítése
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerCount.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+            
+            // Kód teljességének ellenőrzése
+            function checkCodeCompletion() {
+                const allFilled = Array.from(codeInputs).every(input => input.value.length === 1);
+                verifyCodeBtn.disabled = !allFilled;
+            }
+            
+            // Email validálás
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            // Loader megjelenítése
+            function showLoader() {
+                loader.style.display = 'block';
+                sendCodeBtn.disabled = true;
+                verifyCodeBtn.disabled = true;
+            }
+            
+            // Loader elrejtése
+            function hideLoader() {
+                loader.style.display = 'none';
+                sendCodeBtn.disabled = false;
+                checkCodeCompletion(); // Csak akkor engedélyezi, ha minden mező kitöltött
+            }
+            
+            // Hiba üzenet megjelenítése
+            function showError(message) {
+                errorAlert.textContent = message;
+                errorAlert.style.display = 'block';
+                
+                // 5 másodperc után elrejtjük
+                setTimeout(function() {
+                    errorAlert.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Siker üzenet megjelenítése
+            function showSuccess(message) {
+                successAlert.textContent = message;
+                successAlert.style.display = 'block';
+                
+                // 5 másodperc után elrejtjük
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
