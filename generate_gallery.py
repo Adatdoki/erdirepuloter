@@ -1,7 +1,7 @@
 # generate_gallery.py
 import os, json
 
-BASE = 'img/feltoltott'
+BASE = 'img'
 entries = []
 
 for root, _, files in os.walk(BASE):
